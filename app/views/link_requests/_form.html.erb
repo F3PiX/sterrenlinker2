@@ -1,0 +1,50 @@
+<%= form_for(link_request) do |f| %>
+  <% if link_request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(link_request.errors.count, "error") %> prohibited this link_request from being saved:</h2>
+
+      <ul>
+      <% link_request.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :researcher %>
+    <%= f.text_field :researcher %>
+  </div>
+
+  <div class="field">
+    <%= f.label :research_org %>
+    <%= f.text_field :research_org %>
+  </div>
+
+  <div class="field">
+    <%= f.label :researcher_email %>
+    <%= f.text_field :researcher_email %>
+  </div>
+
+
+  <div class="field">
+    <%= f.label :research_proposal %>
+    <%= f.text_field :research_proposal %>
+  </div>
+
+  <div class="field">
+    <%= f.label :patient_org %>
+    <%= f.text_field :patient_org %>
+  </div>
+
+    <div class="field">
+      <%= f.label :fonds %>
+      <%= f.text_field :fonds %>
+    </div>
+
+    <!--<div class="actions">-->
+    <div>
+      <%= f.button "Add as link request", class: 'button' %>
+    </div>
+
+<% end %>
