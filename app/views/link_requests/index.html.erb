@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Link Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Researcher Org</th>
+      <th>Researcher </th>
+      <th>Email</th>
+      <th>Research proposal</th>
+      <th>Patient org</th>
+      <th>Fonds</th>
+      <th>Date Request in</th>
+      <th>Sterrenlink sent at</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @link_requests.each do |link_request| %>
+      <tr>
+        <td><%= link_request.research_org %></td>
+        <td><%= link_request.researcher %></td>
+        <td><%= link_request.researcher_email %></td>
+        <td><%= link_request.research_proposal %></td>
+        <td><%= link_request.patient_org %></td>
+        <td><%= link_request.fonds %></td>
+        <td><%= link_request.application_date %></td>
+        <td><%= link_request.sterrenlink_sent_at %></td>
+        <td><%= link_to 'Show', link_request %></td>
+        <td><%= link_to 'Edit', edit_link_request_path(link_request) %></td>
+        <td><%= link_to 'Destroy', link_request, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Link Request', new_link_request_path %>
