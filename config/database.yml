@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  database: sterrenlinker2_development
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: sterrenlinker2_test
+  host: localhost
+  min_messages: error
+
+production:
+  adapter: postgresql
+  database: sterrenlinker2_production
+  host: localhost

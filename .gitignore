@@ -19,3 +19,4 @@
 #ignore ide settings
 /.idea
 /.vscode
+/config/secrets.yml
