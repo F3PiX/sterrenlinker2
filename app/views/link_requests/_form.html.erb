@@ -26,7 +26,6 @@
     <%= f.text_field :researcher_email %>
   </div>
 
-
   <div class="field">
     <%= f.label :research_proposal %>
     <%= f.text_field :research_proposal %>
@@ -41,6 +40,13 @@
       <%= f.label :fonds %>
       <%= f.text_field :fonds %>
     </div>
+
+    <div class="field">
+      <%= f.label :application_date %>
+      <%= f.datetime_select :application_date %>
+    </div>
+
+    <!--Sterrenlink sent at will be set automatically-->
 
     <!--<div class="actions">-->
     <div>

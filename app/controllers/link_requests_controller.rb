@@ -67,8 +67,14 @@ class LinkRequestsController < ApplicationController
       @link_request = LinkRequest.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def link_request_params
-      params.require(:link_request).permit(:researcher, :research_org, :researcher_email, :research_proposal, :patient_org, :fonds)
+      params.require(:link_request)
+            .permit(
+                :researcher, :research_org, :researcher_email, :research_proposal,
+                :patient_org,
+                :fonds,
+                :application_date,
+                :sterrenlink_sent_at,
+            )
     end
 end

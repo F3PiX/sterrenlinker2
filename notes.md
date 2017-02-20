@@ -2,6 +2,7 @@ Notes for development
 
 TODO add specs!
 
+TODO add annotate gem
 
 TODO Create model sterrenLINK !!
 ( init with query params ? )
