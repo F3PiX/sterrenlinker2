@@ -54,5 +54,9 @@ group :development do
   gem 'annotate'
 end
 
+group :test do
+  gem 'shoulda-matchers', '~> 3.0'  # http://matchers.shoulda.io/docs/v3.1.1/
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

@@ -1,4 +1,7 @@
 class LinkRequest < ApplicationRecord
+  validates :researcher, :research_org, :research_proposal, :researcher_email,
+            :patient_org, :fonds, :application_date, presence: true
+
 end
 
 # == Schema Information
