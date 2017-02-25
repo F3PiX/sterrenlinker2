@@ -1,0 +1,1 @@
+json.partial! "link_requests/link_request", link_request: @link_request

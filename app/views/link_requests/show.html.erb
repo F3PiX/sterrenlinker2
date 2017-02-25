@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+Research proposal: <%= @link_request.research_proposal %>
+
+<p><%= @link_request.research_org %><p>
+<p><%= @link_request.researcher %></p>
+<p><%= @link_request.researcher_email %></p> todo: copy_emailadres
+<p><%= @link_request.patient_org %></p>
+<p><%= @link_request.fonds %></p>
+<p><%= @link_request.application_date %></p>
+<p><%= @link_request.sterrenlink_sent_at %></p>
+
+<p>
+  <strong>Patient org:</strong>
+  <%= @link_request.patient_org %>
+</p>
+
+<%= link_to 'Edit', edit_link_request_path(@link_request) %> |
+<%= link_to 'Back', link_requests_path %>

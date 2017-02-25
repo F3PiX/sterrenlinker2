@@ -1,0 +1,1 @@
+json.array! @link_requests, partial: 'link_requests/link_request', as: :link_request

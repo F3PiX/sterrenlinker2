@@ -1,3 +1,4 @@
+
 # PostgreSQL. Versions 9.1 and up are supported.
 #
 # Install the pg driver:
@@ -83,3 +84,20 @@ production:
   database: sterrenlinker2_production
   username: sterrenlinker2
   password: <%= ENV['STERRENLINKER2_DATABASE_PASSWORD'] %>
+
+#development:
+#  adapter: postgresql
+#  database: sterrenlinker2_development
+#  host: localhost
+
+#test:
+#  adapter: postgresql
+#  database: sterrenlinker2_test
+#  host: localhost
+#  min_messages: error
+
+#production:
+#  adapter: postgresql
+#  database: sterrenlinker2_production
+#  host: localhost
+
