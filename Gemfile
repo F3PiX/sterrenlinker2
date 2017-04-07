@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
 ruby '2.4.0'
+#ruby '2.3.3'
+# 2.4.0 gave me troubles with bundler and openSSL - skip for now
+
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
-
-ruby '2.3.3'
-# 2.4.0 gave me troubles with bundler and openSSL - skip for now
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
