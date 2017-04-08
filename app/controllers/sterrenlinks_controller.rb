@@ -1,17 +1,23 @@
 class SterrenlinksController < ApplicationController
 
+before_action :load_link_request, only: [:index, :show, :create]
+
+  def index
+    @sterrenlinks = @link_request.sterrenlinks
+  end
 
   def show
-    @sterrenlink = Sterrenlink.find(params[:id])
+    # @parent = Parent.find(params[:parent_id])
+    # @child = @parent.children.find(params[:id])
+
+    @sterrenlink = @link_request.sterrenlinks.find(params[:id])
   end
 
   def create
-    @link_request = LinkRequest.find(params[:link_request_id])
-    @sterrenlink = @link_request.sterrenlinks.create(sterrenlink_params)
+    byebug
+    @sterrenlink ||= @link_request.sterrenlinks.build(sterrenlink_params)
 
     if @sterrenlink.save
-      # redirect_to @link_request
-      # redirect_to @sterrenlink
       redirect_to [@link_request, @sterrenlink]
     end
   end
@@ -23,6 +29,10 @@ class SterrenlinksController < ApplicationController
   end
 
   private
+
+    def load_link_request
+      @link_request = LinkRequest.find(params[:link_request_id])
+    end
 
     def sterrenlink_params
       params.require(:sterrenlink).permit(:output_link)

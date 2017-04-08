@@ -2,7 +2,15 @@ class LinkRequest < ApplicationRecord
   validates :researcher, :research_org, :research_proposal, :researcher_email,
             :patient_org, :fonds, :application_date, presence: true
 
-  has_many :sterrenlinks # actually: has one
+  has_many :sterrenlinks, dependent: :destroy # actually: has one
+
+  after_create :auto_create_link
+
+  def auto_create_link
+    @sterrenlink = Sterrenlink.where(link_request_id: self.id).first_or_create
+    byebug
+    # redirect_to [@link_request, @sterrenlink]
+  end
 
 end
 
