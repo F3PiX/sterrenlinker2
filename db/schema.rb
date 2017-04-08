@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220194326) do
+ActiveRecord::Schema.define(version: 20170407142756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,4 +28,13 @@ ActiveRecord::Schema.define(version: 20170220194326) do
     t.datetime "sterrenlink_sent_at"
   end
 
+  create_table "sterrenlinks", force: :cascade do |t|
+    t.string   "output_link"
+    t.integer  "link_request_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.index ["link_request_id"], name: "index_sterrenlinks_on_link_request_id", using: :btree
+  end
+
+  add_foreign_key "sterrenlinks", "link_requests"
 end

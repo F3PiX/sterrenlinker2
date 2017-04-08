@@ -4,7 +4,7 @@ class LinkRequestsController < ApplicationController
   # GET /link_requests
   # GET /link_requests.json
   def index
-    @link_requests = LinkRequest.all
+    @link_requests = LinkRequest.all.reverse_order
   end
 
   # GET /link_requests/1

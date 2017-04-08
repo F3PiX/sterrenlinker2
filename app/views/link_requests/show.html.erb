@@ -2,18 +2,39 @@
 
 Research proposal: <%= @link_request.research_proposal %>
 
-<p><%= @link_request.research_org %><p>
-<p><%= @link_request.researcher %></p>
-<p><%= @link_request.researcher_email %></p> todo: copy_emailadres
-<p><%= @link_request.patient_org %></p>
-<p><%= @link_request.fonds %></p>
-<p><%= @link_request.application_date %></p>
-<p><%= @link_request.sterrenlink_sent_at %></p>
+<p>research_org     : <strong><%= @link_request.research_org %></strong><p>
+<p>researcher       : <strong><%= @link_request.researcher %></strong></p>
+<p>researcher_email : <strong><%= @link_request.researcher_email %></strong>#todo: copy_emailadres</p>
+<p>patient_org      : <strong><%= @link_request.patient_org %></strong></p>
+<p>fonds            : <strong><%= @link_request.fonds %></strong></p>
+<p>application_date : <strong><%= @link_request.application_date %></strong></p>
+<strong><p>sent at : <%= @link_request.sterrenlink_sent_at %></p></strong>
 
-<p>
-  <strong>Patient org:</strong>
-  <%= @link_request.patient_org %>
-</p>
 
 <%= link_to 'Edit', edit_link_request_path(@link_request) %> |
 <%= link_to 'Back', link_requests_path %>
+
+<h4>Maak de Sterrenlink voor deze aanvraag</h4>
+<p>Vul hier de gegevens in voor de sterrenlink.
+  Daarna gebeurt er iets. 1) 2) en 3)
+</p>
+
+<%= form_for([@link_request, @link_request.sterrenlinks.build]) do |f| %>
+
+    <p>
+      <%= f.label :output_link %><br>
+      <%= f.text_field :output_link %>
+    </p>
+    <p>
+      <%#= f.label :body %><br>
+      <%#= f.text_area :body %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+<% end %>
+
+<%= link_to 'Edit', edit_link_request_path(@link_request) %> |
+<%= link_to 'Back', link_requests_path %>
+
+
