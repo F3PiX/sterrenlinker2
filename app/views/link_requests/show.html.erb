@@ -15,8 +15,11 @@ Research proposal: <%= @link_request.research_proposal %>
 <%= link_to 'Back', link_requests_path %>
 
 <h4>Sterrenlink</h4>
-<p>#<%= @sterrenlink.id%>: <%= @sterrenlink.output_link %></p>
-
+<% if @sterrenlink.present? %>
+  <p>#<%= @sterrenlink.id%>: <%= @sterrenlink.output_link %></p>
+<% else %>
+    <p>No sterrenlink present </p>
+<% end %>
 
 <!--<h4>Maak de Sterrenlink voor deze aanvraag</h4>-->
 <!--<p>Vul hier de gegevens in voor de sterrenlink.-->
