@@ -2,6 +2,8 @@ class LinkRequest < ApplicationRecord
   validates :researcher, :research_org, :research_proposal, :researcher_email,
             :patient_org, :fonds, :application_date, presence: true
 
+  has_many :sterrenlinks, dependent: :destroy # actually: has one
+
 end
 
 # == Schema Information

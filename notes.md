@@ -1,5 +1,25 @@
 Notes for development
 
+7/4:
+ 1) deleted the first sterrenlinks migration:
+class CreateSterrenlinks < ActiveRecord::Migration[5.0]
+  def change
+    create_table :sterrenlinks do |t|
+      t.string :output_link
+      t.string :oz
+      t.string :pv
+      t.string :applicant
+      t.belongs_to :link_request, foreign_key: true
+
+      t.timestamps
+    end
+  end
+end
+
+2) followed rails guide to add a second model, upto 6.4, the part where the new comments form 
+is created on the article show page. 
+
+
 Sprint 1: 
 Implement LinkRequest, SterrenLink,
 
