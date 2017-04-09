@@ -14,25 +14,29 @@ Research proposal: <%= @link_request.research_proposal %>
 <%= link_to 'Edit', edit_link_request_path(@link_request) %> |
 <%= link_to 'Back', link_requests_path %>
 
-<h4>Maak de Sterrenlink voor deze aanvraag</h4>
-<p>Vul hier de gegevens in voor de sterrenlink.
-  Daarna gebeurt er iets. 1) 2) en 3)
-</p>
+<h4>Sterrenlink</h4>
+<p>#<%= @sterrenlink.id%>: <%= @sterrenlink.output_link %></p>
 
-<%= form_for([@link_request, @link_request.sterrenlinks.build]) do |f| %>
 
-    <p>
-      <%= f.label :output_link %><br>
-      <%= f.text_field :output_link %>
-    </p>
-    <p>
+<!--<h4>Maak de Sterrenlink voor deze aanvraag</h4>-->
+<!--<p>Vul hier de gegevens in voor de sterrenlink.-->
+  <!--Daarna gebeurt er iets. 1) 2) en 3)-->
+<!--</p>-->
+
+<!--<%= form_for([@link_request, @link_request.sterrenlinks.build]) do |f| %>-->
+
+    <!--<p>-->
+      <%#= f.label :output_link %><br>
+      <!--<%#= f.text_field :output_link %>-->
+    <!--</p>-->
+    <!--<p>-->
       <%#= f.label :body %><br>
-      <%#= f.text_area :body %>
-    </p>
-    <p>
-      <%= f.submit %>
-    </p>
-<% end %>
+      <!--<%#= f.text_area :body %>-->
+    <!--</p>-->
+    <!--<p>-->
+      <!--<%= f.submit %>-->
+    <!--</p>-->
+<!--<% end %>-->
 
 <%= link_to 'Edit', edit_link_request_path(@link_request) %> |
 <%= link_to 'Back', link_requests_path %>

@@ -9,7 +9,6 @@ before_action :load_link_request, only: [:index, :show, :create]
   def show
     # @parent = Parent.find(params[:parent_id])
     # @child = @parent.children.find(params[:id])
-
     @sterrenlink = @link_request.sterrenlinks.find(params[:id])
   end
 
