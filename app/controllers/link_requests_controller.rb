@@ -10,6 +10,7 @@ class LinkRequestsController < ApplicationController
   # GET /link_requests/1
   # GET /link_requests/1.json
   def show
+    @sterrenlink ||= @link_request.sterrenlinks.last
   end
 
   # GET /link_requests/new
@@ -28,6 +29,7 @@ class LinkRequestsController < ApplicationController
 
     respond_to do |format|
       if @link_request.save
+        @link_request.sterrenlinks.create!
         format.html { redirect_to @link_request, notice: 'Link request was successfully created.' }
         format.json { render :show, status: :created, location: @link_request }
       else
@@ -35,6 +37,8 @@ class LinkRequestsController < ApplicationController
         format.json { render json: @link_request.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /link_requests/1

@@ -4,14 +4,6 @@ class LinkRequest < ApplicationRecord
 
   has_many :sterrenlinks, dependent: :destroy # actually: has one
 
-  after_create :auto_create_link
-
-  def auto_create_link
-    @sterrenlink = Sterrenlink.where(link_request_id: self.id).first_or_create
-    byebug
-    # redirect_to [@link_request, @sterrenlink]
-  end
-
 end
 
 # == Schema Information
