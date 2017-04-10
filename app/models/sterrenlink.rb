@@ -12,7 +12,8 @@ class Sterrenlink < ApplicationRecord
 
     def compose_url_for(linkrequest)
       # temp: create A link. To do: create the real link with params, Typeform key, typeform form uid.
-      'https://www.typeform.com/key_UID_params'
+      params = linkrequest.id
+      "https://www.typeform.com/key_UID_#{params}"
     end
 end
 

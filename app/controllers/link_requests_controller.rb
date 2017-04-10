@@ -37,8 +37,6 @@ class LinkRequestsController < ApplicationController
         format.json { render json: @link_request.errors, status: :unprocessable_entity }
       end
     end
-
-
   end
 
   # PATCH/PUT /link_requests/1
