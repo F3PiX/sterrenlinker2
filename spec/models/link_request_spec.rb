@@ -27,8 +27,31 @@ RSpec.describe LinkRequest, type: :model do
   it { should validate_presence_of(:fonds) }
   it { should validate_presence_of(:application_date) }
 
+  let(:link_request) { LinkRequest.create(
+      researcher: "Johan Cruyff",
+      research_proposal: "Voordeel vs Nadeel",
+      research_org: "Cruyff Academy",
+      researcher_email: "cruyffie@example.com",
+      patient_org: "F side",
+      fonds: "RF",
+      application_date: Date.today
+  )}
+
+  it 'has a valid application' do
+    expect(link_request).to be_valid
+  end
+
+  it 'has an array of sterrenlinks' do
+    expect(link_request.sterrenlinks).to eq([])
+  end
+
+  it 'creates a new sterrenlink on save' do
+    link_request.save
+    expect(link_request.sterrenlinks.last).to eq(Sterrenlink.last)
+  end
+end
+
   # Maud 22/2/17
   # most validations are done now within the Typeform form.
   # when moving the form, more validations are required.
 
-end
