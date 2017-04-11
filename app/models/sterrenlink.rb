@@ -1,4 +1,7 @@
 class Sterrenlink < ApplicationRecord
+
+  TYPEFORM_UID= ENV['TYPEFORM_V1_0']
+
   belongs_to :link_request
 
   before_create :create_link
@@ -6,14 +9,17 @@ class Sterrenlink < ApplicationRecord
   private
 
     def create_link
-      # byebug
       self.output_link = compose_url_for(self.link_request)
     end
 
     def compose_url_for(linkrequest)
-      # temp: create A link. To do: create the real link with params, Typeform key, typeform form uid.
-      params = linkrequest.id
-      "https://www.typeform.com/key_UID_#{params}"
+      uri = URI.parse('https://sterren.typeform.com/to/'+ TYPEFORM_UID)
+      uri.query = URI.encode_www_form(
+          "oz" => linkrequest.research_proposal,
+          "pv" => linkrequest.patient_org,
+          "fns" => linkrequest.fonds
+      )
+      uri.to_s.gsub('+', '%20')
     end
 end
 
