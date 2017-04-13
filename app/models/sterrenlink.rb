@@ -25,7 +25,15 @@ class Sterrenlink < ApplicationRecord
 
     def send_to_applicant
       LinkMailer.send_link(self).deliver_now
+      update_date_sent_for(self)
     end
+
+    def update_date_sent_for(sterrenlink)
+      request = sterrenlink.link_request
+      request.sterrenlink_sent_at = Time.current
+      request.save
+    end
+
 end
 
 # == Schema Information

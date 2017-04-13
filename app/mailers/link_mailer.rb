@@ -9,12 +9,5 @@ class LinkMailer < ApplicationMailer
     @link_for_pv= @sterrenlink.output_link
 
     mail(to: @send_to, subject: "Re: Sterrenlink")
-    update_date_sent(sterrenlink.link_request)
   end
-
-  def update_date_sent(request)
-    request.sterrenlink_sent_at = Time.current
-    request.save
-  end
-
 end
