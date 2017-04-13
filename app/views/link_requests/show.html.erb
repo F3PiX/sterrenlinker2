@@ -8,7 +8,7 @@ Research proposal: <%= @link_request.research_proposal %>
 <p>patient_org      : <strong><%= @link_request.patient_org %></strong></p>
 <p>fonds            : <strong><%= @link_request.fonds %></strong></p>
 <p>application_date : <strong><%= @link_request.application_date %></strong></p>
-<strong><p>sent at : <%= @link_request.sterrenlink_sent_at %></p></strong>
+<strong><p>sent at : <%= @link_request.sterrenlink_sent_at.to_s(:short) %></p></strong>
 
 
 <%= link_to 'Edit', edit_link_request_path(@link_request) %> |
