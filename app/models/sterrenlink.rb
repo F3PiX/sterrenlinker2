@@ -4,11 +4,12 @@ class Sterrenlink < ApplicationRecord
 
   belongs_to :link_request
 
-  before_create :create_link
+  before_create :compose_link
+  after_create :send_to_applicant
 
   private
 
-    def create_link
+    def compose_link
       self.output_link = compose_url_for(self.link_request)
     end
 
@@ -21,6 +22,18 @@ class Sterrenlink < ApplicationRecord
       )
       uri.to_s.gsub('+', '%20')
     end
+
+    def send_to_applicant
+      LinkMailer.send_link(self).deliver_now
+      update_date_sent_for(self)
+    end
+
+    def update_date_sent_for(sterrenlink)
+      request = sterrenlink.link_request
+      request.sterrenlink_sent_at = Time.current
+      request.save
+    end
+
 end
 
 # == Schema Information
