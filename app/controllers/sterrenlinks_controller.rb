@@ -13,7 +13,6 @@ before_action :load_link_request, only: [:index, :show, :create]
   end
 
   def create
-    byebug
     @sterrenlink ||= @link_request.sterrenlinks.build(sterrenlink_params)
 
     if @sterrenlink.save

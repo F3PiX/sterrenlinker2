@@ -8,11 +8,8 @@ Research proposal: <%= @link_request.research_proposal %>
 <p>patient_org      : <strong><%= @link_request.patient_org %></strong></p>
 <p>fonds            : <strong><%= @link_request.fonds %></strong></p>
 <p>application_date : <strong><%= @link_request.application_date %></strong></p>
-<strong><p>sent at : <%= @link_request.sterrenlink_sent_at.to_s(:short) %></p></strong>
+<strong><p>sent at : <%= @link_request&.sterrenlink_sent_at&.to_s(:short) %></p></strong>
 
-
-<%= link_to 'Edit', edit_link_request_path(@link_request) %> |
-<%= link_to 'Back', link_requests_path %>
 
 <h4>Sterrenlink</h4>
 <% if @sterrenlink.present? %>
@@ -21,27 +18,6 @@ Research proposal: <%= @link_request.research_proposal %>
     <p>No sterrenlink present </p>
 <% end %>
 
-<!--<h4>Maak de Sterrenlink voor deze aanvraag</h4>-->
-<!--<p>Vul hier de gegevens in voor de sterrenlink.-->
-  <!--Daarna gebeurt er iets. 1) 2) en 3)-->
-<!--</p>-->
 
-<!--<%= form_for([@link_request, @link_request.sterrenlinks.build]) do |f| %>-->
-
-    <!--<p>-->
-      <%#= f.label :output_link %><br>
-      <!--<%#= f.text_field :output_link %>-->
-    <!--</p>-->
-    <!--<p>-->
-      <%#= f.label :body %><br>
-      <!--<%#= f.text_area :body %>-->
-    <!--</p>-->
-    <!--<p>-->
-      <!--<%= f.submit %>-->
-    <!--</p>-->
-<!--<% end %>-->
-
-<%= link_to 'Edit', edit_link_request_path(@link_request) %> |
-<%= link_to 'Back', link_requests_path %>
-
+<%= link_to 'All link requests', link_requests_path %>
 
