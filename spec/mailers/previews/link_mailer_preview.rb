@@ -2,7 +2,7 @@
 class LinkMailerPreview < ActionMailer::Preview
 
   def send_link
-    LinkMailer.send_link
+    LinkMailer.send_link(Sterrenlink.last)
   end
 
 end
