@@ -5,12 +5,19 @@ class Sterrenlink < ApplicationRecord
   belongs_to :link_request
 
   before_create :compose_link
-  after_create :send_to_applicant
+  after_create :process_email
 
   private
 
-    def compose_link
-      self.output_link = compose_url_for(self.link_request)
+  def process_email
+    send_to_applicant
+    update_sent_date
+  end
+
+  def compose_link
+      # create param for pv with article
+      # pass new param to compose-method
+      self.output_link = compose_url_for(link_request)
     end
 
     def compose_url_for(linkrequest)
@@ -25,11 +32,10 @@ class Sterrenlink < ApplicationRecord
 
     def send_to_applicant
       LinkMailer.send_link(self).deliver_now
-      update_date_sent_for(self)
     end
 
-    def update_date_sent_for(sterrenlink)
-      request = sterrenlink.link_request
+    def update_sent_date
+      request = self.link_request
       request.sterrenlink_sent_at = Time.current
       request.save
     end
