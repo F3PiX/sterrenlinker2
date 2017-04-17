@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= f.label :researcher_email %>
-    <%= f.text_field :researcher_email %>
+    <%= f.text_field :researcher_email, value: ENV['EMAIL'] %> #temp: send to me first
   </div>
 
   <div class="field">
