@@ -21,7 +21,6 @@ class Sterrenlink < ApplicationRecord
 
     def compose_url_for(linkrequest)
       find_article_for(linkrequest.patient_org)
-      byebug
       uri = URI.parse('https://sterren.typeform.com/to/'+ TYPEFORM_UID)
       uri.query = URI.encode_www_form(
           "oz" => linkrequest.research_proposal,
