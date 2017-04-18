@@ -10,7 +10,17 @@ RSpec.describe Sterrenlink, type: :model do
       fonds: "RF",
       application_date: Date.today
   )}
+  let(:other_link_request) { LinkRequest.new(
+      researcher: "Johan Cruyff",
+      research_proposal: "Voordeel vs Nadeel",
+      research_org: "Cruyff Academy",
+      researcher_email: "cruyffie@example.com",
+      patient_org: "org.nl",
+      fonds: "RF",
+      application_date: Date.today
+  )}
   let(:sterrenlink) { Sterrenlink.create(link_request_id: link_request.id) }
+  let(:second_link) { Sterrenlink.create(link_request_id: other_link_request.id) }
 
   it '(10) must have a reference to a link request' do
     sterrenlink.link_request_id = nil
@@ -25,8 +35,15 @@ RSpec.describe Sterrenlink, type: :model do
 
   it '(20) returns the correct url' do
     link_request.save
-    sample_url = "https://sterren.typeform.com/to/RgLBwe?oz=Voordeel%20vs%20Nadeel&pv=F%20side&fns=RF"
+    sample_url = "https://sterren.typeform.com/to/BK3dsP?oz=Voordeel%20vs%20Nadeel&pv=de%20F%20side&fns=RF"
+    puts sterrenlink.output_link
     expect(sterrenlink.output_link).to eq(sample_url)
+  end
+
+  it '(22) can leave out the article' do
+    other_link_request.save
+    another_sample_url = "https://sterren.typeform.com/to/BK3dsP?oz=Voordeel%20vs%20Nadeel&pv=org.nl&fns=RF"
+    expect(second_link.output_link).to eq(another_sample_url)
   end
 
   it '(25) is created when a new link request is created' do

@@ -4,10 +4,10 @@ Research proposal: <%= @link_request.research_proposal %>
 
 <p>research_org     : <strong><%= @link_request.research_org %></strong><p>
 <p>researcher       : <strong><%= @link_request.researcher %></strong></p>
-<p>researcher_email : <strong><%= @link_request.researcher_email %></strong>#todo: copy_emailadres</p>
+<p>researcher_email : <strong><%= @link_request.researcher_email %></strong></p>
 <p>patient_org      : <strong><%= @link_request.patient_org %></strong></p>
 <p>fonds            : <strong><%= @link_request.fonds %></strong></p>
-<p>application_date : <strong><%= @link_request.application_date %></strong></p>
+<p>application_date : <strong><%= @link_request.application_date.to_s(:short) %></strong></p>
 <strong><p>sent at : <%= @link_request&.sterrenlink_sent_at&.to_s(:short) %></p></strong>
 
 
