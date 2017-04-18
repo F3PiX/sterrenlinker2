@@ -1,5 +1,5 @@
 class LinkRequestsController < ApplicationController
-  before_action :set_link_request, only: [:show, :edit, :destroy]
+  before_action :set_link_request, only: [:show, :edit, :update, :destroy]
 
   # GET /link_requests
   # GET /link_requests.json
@@ -20,7 +20,6 @@ class LinkRequestsController < ApplicationController
 
   # GET /link_requests/1/edit
   def edit
-    redirect_to @link_request, notice: 'This can not be edited.'
   end
 
   # POST /link_requests
@@ -40,9 +39,16 @@ class LinkRequestsController < ApplicationController
     end
   end
 
-  # NOTE we don't want an existing link to be edited, because the non_edited link
-  #  has been sent already to the researcher/applicant
   def update
+    respond_to do |format|
+      if @link_request.update(link_request_params)
+        format.html { redirect_to @link_request, notice: 'Link request was successfully updated.' }
+        format.json { render :show, status: :ok, location: @link_request }
+      else
+        format.html { render :edit }
+        format.json { render json: @link_request.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # DELETE /link_requests/1
