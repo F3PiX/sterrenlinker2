@@ -2,6 +2,7 @@ Notes for development
 18/4
 - add article 'de' to patient org param (PR #19)
 - removed all articles from TypeForm questionnaire (v1_2)
+- bring updating logic back to the LinkRequest ()
 
 
 17/4 
