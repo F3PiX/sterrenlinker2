@@ -7,8 +7,10 @@ before_action :load_link_request, only: [:index, :show, :create]
   end
 
   def show
+    # MEMO Ignore comments; they are here for educational use
     # @parent = Parent.find(params[:parent_id])
     # @child = @parent.children.find(params[:id])
+    # @sterrenlink ||= @link_request.sterrenlinks.last
     @sterrenlink = @link_request.sterrenlinks.find(params[:id])
   end
 
