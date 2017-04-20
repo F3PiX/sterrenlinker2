@@ -1,7 +1,6 @@
 class Sterrenlink < ApplicationRecord
 
   TYPEFORM_UID= ENV['TYPEFORM_V1_2'] # second version; articles removed from questionnaire
-  ORGS_WITH_DE= ['DON', 'VOKK', 'BOSK', 'AVN', 'Cliëntenraad Reade', 'Afasiecliëntengroep', 'F side'] # 'F side' for testing
 
   belongs_to :link_request
 
@@ -20,11 +19,10 @@ class Sterrenlink < ApplicationRecord
     end
 
     def compose_url_for(linkrequest)
-      find_article_for(linkrequest.patient_org)
       uri = URI.parse('https://sterren.typeform.com/to/'+ TYPEFORM_UID)
       uri.query = URI.encode_www_form(
           "oz" => linkrequest.research_proposal,
-          "pv" => @article + linkrequest.patient_org,
+          "pv" => linkrequest.patient_org_with_article,
           "fns" => linkrequest.fonds
       )
       uri.to_s.gsub('+', '%20')
@@ -40,13 +38,6 @@ class Sterrenlink < ApplicationRecord
       request.save
     end
 
-    def find_article_for(patient_org)
-      if patient_org.in?(ORGS_WITH_DE)
-        @article = "de "
-      else
-        @article = ''
-      end
-    end
 end
 
 # == Schema Information

@@ -1,9 +1,21 @@
 class LinkRequest < ApplicationRecord
+
+  ORGS_WITH_DE= ['DON', 'VOKK', 'BOSK', 'AVN', 'Cliëntenraad Reade', 'Afasiecliëntengroep', 'F side'] # 'F side' for testing
+
   validates :researcher, :research_org, :research_proposal, :researcher_email,
             :patient_org, :fonds, :application_date, presence: true
 
   has_many :sterrenlinks, dependent: :destroy
   # actually: has_one ^
+
+  def patient_org_with_article
+    if patient_org.in?(ORGS_WITH_DE)
+      "de #{patient_org}"
+    else
+      patient_org
+    end
+  end
+
 end
 
 # == Schema Information
