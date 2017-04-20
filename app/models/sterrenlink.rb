@@ -41,7 +41,7 @@ class Sterrenlink < ApplicationRecord
     end
 
     def find_article_for(patient_org)
-      if ORGS_WITH_DE.include? patient_org
+      if patient_org.in?(ORGS_WITH_DE)
         @article = "de "
       else
         @article = ''
