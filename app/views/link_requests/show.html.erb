@@ -14,10 +14,9 @@ Research proposal: <%= @link_request.research_proposal %>
 <h4>Sterrenlink</h4>
 <% if @sterrenlink.present? %>
   <p>#<%= @sterrenlink.id%>: <%= @sterrenlink.output_link %></p>
+  <p><%=link_to "Show Sterrenlink", link_request_sterrenlink_path(@link_request, @link_request.sterrenlinks.last) %></p>
 <% else %>
-    <p>No sterrenlink present </p>
+  <p>No sterrenlink present </p>
 <% end %>
 
-
-<%= link_to 'All link requests', link_requests_path %>
-
+<p><%= link_to 'All link requests', link_requests_path %></p>

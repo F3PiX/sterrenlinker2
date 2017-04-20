@@ -1,19 +1,18 @@
 class Sterrenlink < ApplicationRecord
 
-  TYPEFORM_UID= ENV['TYPEFORM_V1_2'] # second version; articles removed from questionnaire
+  TYPEFORM_UID= ENV['TYPEFORM_V1_2'] # second version; articles removed in hidden fields and texts in questionnaire
 
   belongs_to :link_request
 
-  before_create :compose_link
-  after_create :process_email
+  before_save :compose_link
+  # after_create :process_email
+
+  def process_email
+    send_to_applicant
+    update_sent_date
+  end
 
   private
-
-    def process_email
-      send_to_applicant
-      update_sent_date
-    end
-
     def compose_link
       self.output_link = compose_url_for(link_request)
     end
@@ -37,7 +36,6 @@ class Sterrenlink < ApplicationRecord
       request.sterrenlink_sent_at = Time.current
       request.save
     end
-
 end
 
 # == Schema Information

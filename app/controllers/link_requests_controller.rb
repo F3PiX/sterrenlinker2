@@ -42,6 +42,7 @@ class LinkRequestsController < ApplicationController
   def update
     respond_to do |format|
       if @link_request.update(link_request_params)
+        @link_request.sterrenlinks.last.save
         format.html { redirect_to @link_request, notice: 'Link request was successfully updated.' }
         format.json { render :show, status: :ok, location: @link_request }
       else
