@@ -1,11 +1,13 @@
 <h2>Sterrenlink</h2>
 <p><%= @sterrenlink.id %>: <%= @sterrenlink.output_link %></p>
 
-<% unless @sterrenlink.link_request.sterrenlink_sent_at.blank? %>
+<% if @sterrenlink.link_request.sterrenlink_sent_at.nil? %>
 
 <blockquote><%= button_to "Send Sterrenlink", [:ready_to_send, @sterrenlink.link_request, @sterrenlink], class:'button'%> to <%= @link_request.researcher_email %>
 
   <p id="notice"><%= notice %></p>
+<% else %>
+    <p>The button to send an email is no longer visible when an email has been sent once </p>
 
 </blockquote>
 <% end %>
