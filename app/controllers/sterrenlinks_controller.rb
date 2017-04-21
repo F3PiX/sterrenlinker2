@@ -33,9 +33,9 @@ before_action :load_link_request
     # @sterrenlink = @link_request.sterrenlinks.find(params[:id])
     @sterrenlink = @link_request.sterrenlinks.last
     @sterrenlink.process_email
+    flash[:notice] = "Email is sent out!"
     redirect_to [@link_request, @sterrenlink]
   end
-
 
   private
 
