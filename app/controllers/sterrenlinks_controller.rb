@@ -29,8 +29,6 @@ before_action :load_link_request
   end
 
   def ready_to_send
-    # @link_request = LinkRequest.find(params[:link_request_id])
-    # @sterrenlink = @link_request.sterrenlinks.find(params[:id])
     @sterrenlink = @link_request.sterrenlinks.last
     @sterrenlink.process_email
     flash[:notice] = "Email is sent out!"
