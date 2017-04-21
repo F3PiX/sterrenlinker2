@@ -3,8 +3,10 @@ SHOW me your sterrenlink
 <p><%= @sterrenlink.id %>: <%= @sterrenlink.output_link %></p>
 
 <%#= button_to "Send Sterrenlink", ready_to_send_link_request_sterrenlink_path([@sterrenlink.link_request, @sterrenlink]), class:'button'%>
-
-
+<blockquote><%= button_to "Send Sterrenlink", [:ready_to_send, @sterrenlink.link_request, @sterrenlink], class:'button'%> to <%= @link_request.researcher_email %>
+</blockquote>
 <p><%= link_to "Back to LinkRequest", @link_request %></p>
 
-<%= link_to "Send Sterrenlink now", [:ready_to_send, @sterrenlink.link_request, @sterrenlink], method: :post %>
+<%#= link_to "Send Sterrenlink now", [:ready_to_send, @sterrenlink.link_request, @sterrenlink], method: :post %>
+<!--Not working: -->
+<%#= link_to "Send Sterrenlink now", [:ready_to_send, @sterrenlink], method: :post %>
