@@ -16,6 +16,21 @@ p, ol, ul, td {
   margin: 33px;
 }
 
+.button {
+  background-color: #D65CA9;
+  border: none;
+  box-shadow: 1px 1px 5px #888888;
+  color: #4B424C;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -23,15 +38,15 @@ pre {
 }
 
 a {
-  color: #000;
+  color: #D65CA9;
 
   &:visited {
-    color: #666;
+    //color: #666;
   }
 
   &:hover {
     color: #fff;
-    background-color: #000;
+    background-color: #4B424C;
   }
 }
 
@@ -57,13 +72,13 @@ div {
 
 .field_with_errors {
   padding: 2px;
-  background-color: red;
+  background-color: #D65CA9;
   display: table;
 }
 
 #error_explanation {
   width: 450px;
-  border: 2px solid red;
+  border: 2px solid #D65CA9;
   padding: 7px;
   padding-bottom: 0;
   margin-bottom: 20px;
@@ -76,7 +91,7 @@ div {
     font-size: 12px;
     margin: -7px;
     margin-bottom: 0;
-    background-color: #c00;
+    background-color: #D65CA9;
     color: #fff;
   }
 
@@ -89,3 +104,5 @@ div {
 label {
   display: block;
 }
+
+
