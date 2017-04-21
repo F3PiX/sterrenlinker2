@@ -5,7 +5,6 @@ class Sterrenlink < ApplicationRecord
   belongs_to :link_request
 
   before_save :compose_link
-  # after_create :process_email
 
   def process_email
     send_to_applicant
