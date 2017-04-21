@@ -1,3 +1,21 @@
-SHOW me your sterrenlink
-
+<h2>Sterrenlink</h2>
 <p><%= @sterrenlink.id %>: <%= @sterrenlink.output_link %></p>
+
+<% unless @sterrenlink.link_request.sterrenlink_sent_at.blank? %>
+
+<blockquote><%= button_to "Send Sterrenlink", [:ready_to_send, @sterrenlink.link_request, @sterrenlink], class:'button'%> to <%= @link_request.researcher_email %>
+
+  <p id="notice"><%= notice %></p>
+
+</blockquote>
+<% end %>
+
+<p><%= link_to "Back to LinkRequest", @link_request %></p>
+
+
+<!--MEMO ignore comments, they are for reference only-->
+<!--These work as well:-->
+<%#= link_to "Send Sterrenlink now", [:ready_to_send, @sterrenlink.link_request, @sterrenlink], method: :post %>
+<!--And these do not: -->
+<%#= link_to "Send Sterrenlink now", [:ready_to_send, @sterrenlink], method: :post %>
+<%#= button_to "Send Sterrenlink", ready_to_send_link_request_sterrenlink_path([@sterrenlink.link_request, @sterrenlink]), class:'button'%>
