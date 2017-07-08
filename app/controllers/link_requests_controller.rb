@@ -2,6 +2,7 @@ class LinkRequestsController < ApplicationController
   before_action :set_link_request, only: [:show, :edit, :update, :destroy]
   
   #TEST editorconfig file setting (keep newline @ end of file)
+  # Test 2: after setting in Webstorm too...
 
   # GET /link_requests
   # GET /link_requests.json
