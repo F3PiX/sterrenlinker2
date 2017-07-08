@@ -1,5 +1,7 @@
 class LinkRequestsController < ApplicationController
   before_action :set_link_request, only: [:show, :edit, :update, :destroy]
+  
+  #TEST editorconfig file setting (keep newline @ end of file)
 
   # GET /link_requests
   # GET /link_requests.json
